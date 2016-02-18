@@ -19,8 +19,12 @@ class CampsController < ApplicationController
   end
 
   def show
-    binding.pry
+    @campactivity = Campactivity.new
     @camp = Camp.find(params[:id])
+    @activity = Activity.new
+    # if @activity.save
+    #
+    # end
   end
 
   def new

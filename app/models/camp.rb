@@ -21,4 +21,8 @@ class Camp < ActiveRecord::Base
     "#{self.city}, #{self.state}"
   end
 
+  def weeks
+    self.days / 7
+  end
+
 end

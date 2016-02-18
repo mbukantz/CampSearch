@@ -1,1 +1,24 @@
+<h1><%= @camp.name %></h1>
+  <p>Type: <%=@camp.class %></p>
+  <p>Weeks: <%= @camp.weeks %></p>
+  <p> Address: <%= @camp.full_address %> </p>
+  <p> Price: $<%= @camp.cost %> </p>
+<div class="container">
+  <h3> Activities </h3><% @camp.activities.uniq.each do |activity| %>
+    <p> <%= activity.name %> </p>
+  <% end %>
+</div>
 
+
+<%= form_for @activity, remote: true do |f| %>
+
+
+
+
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.label :category %>
+<%= f.select :category, ["Water", "Sport", "Specialty"] %>
+<%= f.submit %>
+
+<% end %>
