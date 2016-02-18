@@ -11,6 +11,8 @@
 
 
 <%= form_for @activity, remote: true do |f| %>
+<%= f.fields_for @campactivity do |ff| %>
+<%= ff.hidden_field :camp_id, value: @camp.id %>
 
 
 
@@ -20,5 +22,5 @@
 <%= f.label :category %>
 <%= f.select :category, ["Water", "Sport", "Specialty"] %>
 <%= f.submit %>
-
+<% end %>
 <% end %>
