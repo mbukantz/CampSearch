@@ -17,4 +17,27 @@ class CampsController < ApplicationController
   def index
     @camps = Camp.all
   end
+
+  def show
+    binding.pry
+    @camp = Camp.find(params[:id])
+  end
+
+  def new
+    @camp = Camp.new
+  end
+
+  def create
+    @camp = Camp.new(camp_params)
+    if @camp.save
+      #redirect_to somewhere
+    else
+      render 'new'
+    end
+  end
+
+  private
+  def camp_params
+    params.require(:camp).permit(:id, :name, :class, :days, :city, :state, :cost, activity_attributes: [:name, :category])
+  end
 end
