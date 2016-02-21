@@ -12,9 +12,10 @@
 
 <%= form_for @activity, remote: true do |f| %>
 
-
-
-
+<%=f.fields_for :campactivity do |ff|%>
+<%=ff.label :camp_id%>
+<%=ff.number_field :camp_id%>
+<%end%>
 <%= f.label :name %>
 <%= f.text_field :name %>
 <%= f.label :category %>

@@ -15,6 +15,7 @@ class ActivitiesController < ApplicationController
   def create
     if request.xhr?
       @activity = Activity.create(activity_params)
+      @campactivity = Campactivity.create(campactivity_params)
       html_string = render_to_string 'activities/_activity', locals: {activity: @activity}, layout: false
       render json: {template: html_string}
     end
@@ -22,7 +23,11 @@ class ActivitiesController < ApplicationController
 
   private
   def activity_params
-    params.require(:activity).permit(:name, :category)
+    params.require(:activity).permit(:name, :category,campactivity_attributes: [:camp_id, :activity_id])
+  end
+
+  def campactivity_params
+    params.require(:activity).permit(:camp_id, :activity_id)
   end
 
 end

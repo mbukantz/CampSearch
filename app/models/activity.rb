@@ -12,4 +12,5 @@
 class Activity < ActiveRecord::Base
   has_many :campactivities
   has_many :camps, through: :campactivities
+  accepts_nested_attributes_for :campactivities
 end
